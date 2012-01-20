@@ -6,7 +6,7 @@ find_package(Qt4 REQUIRED) # find and setup Qt4 for this project
 
 # tell cmake to proces CMakeLists.txt in that subdirectory
 #add_subdirectory(src)
-ADD_SUBDIRECTORY(build)
+#ADD_SUBDIRECTORY(build)
 # the next line sets up include and link directories and defines some variables that we will use.
 # you can modify the behavior by setting some variables, e.g.
 #   set(QT_USE_OPENGL TRUE)
@@ -33,6 +33,7 @@ QT4_WRAP_CPP (Hexman_MOC_HEADERS ${Hexman_MOC_HEADERS})
 
 # Don't forget to include output directory, otherwise
 # the UI file won't be wrapped!
+
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 
 #Now add these generated files to the ADD_EXECUTABLE step
