@@ -2,6 +2,28 @@ project(Hexman) # the name of your project
 
 cmake_minimum_required(VERSION 2.8.0)
 
+EXECUTE_PROCESS(
+    COMMAND ${CMAKE_C_COMPILER} -dumpmachine
+    OUTPUT_VARIABLE MACHINE
+    OUTPUT_STRIP_TRAILING_WHITESPACE
+)
+MESSAGE(STATUS  "Machine: ${MACHINE}, void pointer size: ${CMAKE_SIZEOF_VOID_P}")
+STRING(REGEX MATCH "(i?86-*)|(athlon-*)|(pentium-*)" _machine_x86 "${MACHINE}")
+IF (_machine_x86)
+    MESSAGE(STATUS "Found target X86")
+    SET(ARCH_X86 1)
+ENDIF (_machine_x86)
+IF (APPLE AND CMAKE_SIZEOF_VOID_P EQUAL 8 AND ARCH_X86 EQUAL 1)
+  MESSAGE(STATUS "Found Snow Leopard Target: Apple, 64 bit, X86")
+  UNSET(ARCH_X86)
+  SET(ARCH_X86_64 1)
+  SET(APPLE_10_6_X 1 CACHE TYPE BOOL)
+ENDIF (APPLE AND CMAKE_SIZEOF_VOID_P EQUAL 8 AND ARCH_X86 EQUAL 1)
+
+if (APPLE)
+  set(QT_QMAKE_EXECUTABLE /Users/anders/QtSDK/Desktop/Qt/4.8.0/gcc/bin/qmake)
+endif (APPLE)
+
 find_package(Qt4 REQUIRED) # find and setup Qt4 for this project
 
 # tell cmake to proces CMakeLists.txt in that subdirectory
