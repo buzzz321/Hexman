@@ -1,7 +1,7 @@
 project(Hexman) # the name of your project
 
 cmake_minimum_required(VERSION 2.8.0)
-
+#get machine
 EXECUTE_PROCESS(
     COMMAND ${CMAKE_C_COMPILER} -dumpmachine
     OUTPUT_VARIABLE MACHINE
@@ -19,7 +19,7 @@ IF (APPLE AND CMAKE_SIZEOF_VOID_P EQUAL 8 AND ARCH_X86 EQUAL 1)
   SET(ARCH_X86_64 1)
   SET(APPLE_10_6_X 1 CACHE TYPE BOOL)
 ENDIF (APPLE AND CMAKE_SIZEOF_VOID_P EQUAL 8 AND ARCH_X86 EQUAL 1)
-
+#######################################################################
 if (APPLE)
   set(QT_QMAKE_EXECUTABLE /Users/anders/QtSDK/Desktop/Qt/4.8.0/gcc/bin/qmake)
 endif (APPLE)

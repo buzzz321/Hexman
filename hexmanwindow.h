@@ -15,6 +15,11 @@ public:
     explicit HexmanWindow(QWidget *parent = 0);
     ~HexmanWindow();
     
+private slots:
+    void on_loadButton_clicked();
+
+    void on_saveButton_clicked();
+
 private:
     Ui::HexmanWindow *ui;
 };
