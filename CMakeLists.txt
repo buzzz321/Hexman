@@ -2,7 +2,11 @@ project(Hexman) # the name of your project
 
 cmake_minimum_required(VERSION 2.8.0)
 
+ENABLE_TESTING()
 find_package(Qt4 REQUIRED) # find and setup Qt4 for this project
+## google test
+ADD_SUBDIRECTORY (gtest-1.6.0)
+include_directories(${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR})
 
 # tell cmake to proces CMakeLists.txt in that subdirectory
 #add_subdirectory(src)
@@ -41,5 +45,5 @@ include_directories(${CMAKE_CURRENT_BINARY_DIR})
 add_executable(Hexman ${Hexman_SRCS} ${Hexman_UIS_H} ${Hexman_MOC_HEADERS})
 
 # link the "Hexman" target against the Qt libraries. which libraries exactly, is defined by the "include(${QT_USE_FILE})" line above, which sets up this variable.
-target_link_libraries(Hexman ${QT_LIBRARIES})
+target_link_libraries(Hexman ${QT_LIBRARIES} gtest gtest_main )
 
