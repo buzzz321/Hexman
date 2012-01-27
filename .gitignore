@@ -5,3 +5,24 @@ cmake_install.cmake
 Makefile
 
 build/**/*
+
+xcode/**/*
+
+.cproject
+
+.project
+
+build/CMakeCache.txt
+
+build/Hexman
+
+build/ui_hexmanwindow.h
+
+
+xcode/CMakeCache.txt
+
+xcode/moc_hexmanwindow.cxx
+
+xcode/ui_hexmanwindow.h
+
+Hexman.pro.user
