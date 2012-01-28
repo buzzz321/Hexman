@@ -8,6 +8,8 @@ build/**/*
 
 xcode/**/*
 
+gtest-1.6.0
+
 .cproject
 
 .project
@@ -26,3 +28,11 @@ xcode/moc_hexmanwindow.cxx
 xcode/ui_hexmanwindow.h
 
 Hexman.pro.user
+
+build/CTestTestfile.cmake
+
+build/moc_hexmanwindow.cxx
+
+build/tester
+
+xcode/CTestTestfile.cmake

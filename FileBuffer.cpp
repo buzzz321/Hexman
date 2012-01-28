@@ -9,9 +9,9 @@ FileBuffer::FileBuffer(std::size_t len): rowLength(len) {
 
 std::vector<unsigned char>
 FileBuffer::getLine(){
-    vector<unsigned char> retVal;
+    vector<unsigned char> retVal(this->rowLength);
     
-    //infile->read
+    infile->read(reinterpret_cast<char*>(&retVal[0]), this->rowLength);
     retVal.push_back(12);
     return retVal;
 }
