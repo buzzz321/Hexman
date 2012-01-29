@@ -5,21 +5,24 @@
 #include <fstream>
 #include <vector>
 #include <cstddef>
+#include <string>
+
 namespace Program {
     class FileBuffer {
         public:
             FileBuffer(std::size_t len);
             virtual ~FileBuffer ();
 
-            std::vector<unsigned char> getLine();    
+            std::vector<unsigned char> getLine();
 
-
-            void setFileStream(std::istream *inFile) {
+            void init(std::string filename);
+            void setFileStream(std::fstream *inFile) {
                 this->infile = inFile;
             }
         private:
-            std::istream *infile;
+            std::fstream *infile;
             std::size_t rowLength;
+            std::string filename;
     };
 
 }
