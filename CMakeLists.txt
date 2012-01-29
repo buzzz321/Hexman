@@ -2,7 +2,7 @@ project(Hexman) # the name of your project
 
 cmake_minimum_required(VERSION 2.8.0)
 
-
+set(CMAKE_BUILD_TYPE Debug)
 #get machine
 EXECUTE_PROCESS(
     COMMAND ${CMAKE_C_COMPILER} -dumpmachine
