@@ -22,7 +22,7 @@ FileBuffer::getLine(){
 
 std::vector<std::vector<unsigned char> >
 FileBuffer::getLines(std::size_t lines) {
-    vector<vector<unsigned char> > retVal(lines);
+    vector<vector<unsigned char> > retVal;
     std::size_t index = 0;
 
     while((index < lines) && !infile->fail()){
