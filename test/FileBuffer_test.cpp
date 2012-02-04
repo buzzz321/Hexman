@@ -40,9 +40,12 @@ TEST(FileBuffer, getLinesFileData) {
     bool fail = fb.init("data.dat");
     EXPECT_EQ(false, fail);
 
-    std::vector<std::vector<unsigned char> > apa = fb.getLines(2);
+    std::vector<std::vector<unsigned char> > apa = fb.getLines(3);
     std::cout<<fb.getBytesRead()<<std::endl;
 
-    char expected = 0x12;
+    char expected = 0xAA;
     EXPECT_EQ(static_cast<unsigned char>(expected), apa[1][0]);
+    
+    expected = 0x55;
+    EXPECT_EQ(static_cast<unsigned char>(expected), apa[2][0]);
 }

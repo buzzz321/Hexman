@@ -25,6 +25,10 @@ ENDIF (APPLE AND CMAKE_SIZEOF_VOID_P EQUAL 8 AND ARCH_X86 EQUAL 1)
 #######################################################################
 if (APPLE)
   set(QT_QMAKE_EXECUTABLE /Users/anders/QtSDK/Desktop/Qt/4.8.0/gcc/bin/qmake)
+ 
+  set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -Wall")
+  set(CMAKE_CSS_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -Wall")
+
 endif (APPLE)
 ######################################################################
 
@@ -43,6 +47,7 @@ include_directories(${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR})
 # -> this will cause cmake to include and link against the OpenGL module
 include(${QT_USE_FILE})
 # see http://cmake.org/cmake/help/cmake2.6docs.html#module:FindQt4 for a complete list
+
 
 # the variable "Hexman_SRCS" contains all .cpp files of this project
 set(Hexman_SRCS main.cpp  hexmanwindow.cpp FileBuffer.cpp)

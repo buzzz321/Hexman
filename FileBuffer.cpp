@@ -27,16 +27,17 @@ FileBuffer::getLines(std::size_t lines) {
 
     while((index < lines) && !infile->fail()){
         ++index;
-        retVal.push_back(getLine());
+        vector<unsigned char> temp=getLine();
+        retVal.push_back(temp);
     }
     return retVal;
 }
 
 bool FileBuffer::init(string filename){
-/*  char buffer[1024];
-    getcwd(buffer, sizeof(buffer)/sizeof(char));
-    cout<<buffer<<endl;
-*/
+//    char buffer[1024];
+//    getcwd(buffer, sizeof(buffer)/sizeof(char));
+//    cout<<buffer<<endl;
+
     this->filename = filename;
     this->infile = new fstream(this->filename.c_str() , ios::in | ios::binary);
 
