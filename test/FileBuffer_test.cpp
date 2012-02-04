@@ -23,13 +23,26 @@ TEST(FileBuffer, getLine) {
 }
 */
 TEST(FileBuffer, getLineFileData) {
-    FileBuffer fb(80);
+    FileBuffer fb(8);
 
-    fb.init("data.dat");
+    bool fail = fb.init("data.dat");
+    EXPECT_EQ(false, fail);
 
     std::vector<unsigned char> apa = fb.getLine();
+    std::cout<<fb.getBytesRead()<<std::endl;
 
     char expected = 0x12;
-
     EXPECT_EQ(static_cast<unsigned char>(expected), apa[0]);
+}
+TEST(FileBuffer, getLinesFileData) {
+    FileBuffer fb(16);
+
+    bool fail = fb.init("data.dat");
+    EXPECT_EQ(false, fail);
+
+    std::vector<std::vector<unsigned char> > apa = fb.getLines(2);
+    std::cout<<fb.getBytesRead()<<std::endl;
+
+    char expected = 0x12;
+    EXPECT_EQ(static_cast<unsigned char>(expected), apa[1][0]);
 }

@@ -1,10 +1,12 @@
 #include "FileBuffer.h"
 #include <fstream>
+#include <unistd.h>
+
 
 using namespace std;
 using namespace Program;
 
-FileBuffer::FileBuffer(std::size_t len): rowLength(len) {
+FileBuffer::FileBuffer(std::size_t len): rowLength(len), bytesRead(0) {
     cout<<this->rowLength<<endl;
 }
 
@@ -13,13 +15,32 @@ FileBuffer::getLine(){
     vector<unsigned char> retVal(this->rowLength);
 
     infile->read(reinterpret_cast<char*>(&retVal[0]), this->rowLength);
-    retVal.push_back(12);
+    this->bytesRead = infile->gcount();
+    
     return retVal;
 }
 
-void FileBuffer::init(string filename){
+std::vector<std::vector<unsigned char> >
+FileBuffer::getLines(std::size_t lines) {
+    vector<vector<unsigned char> > retVal(lines);
+    std::size_t index = 0;
+
+    while((index < lines) && !infile->fail()){
+        ++index;
+        retVal.push_back(getLine());
+    }
+    return retVal;
+}
+
+bool FileBuffer::init(string filename){
+/*  char buffer[1024];
+    getcwd(buffer, sizeof(buffer)/sizeof(char));
+    cout<<buffer<<endl;
+*/
     this->filename = filename;
     this->infile = new fstream(this->filename.c_str() , ios::in | ios::binary);
+
+    return this->infile->fail();
 }
 
 

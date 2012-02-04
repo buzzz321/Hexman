@@ -14,14 +14,20 @@ namespace Program {
             virtual ~FileBuffer ();
 
             std::vector<unsigned char> getLine();
+            std::vector<std::vector<unsigned char> > getLines(std::size_t lines);
 
-            void init(std::string filename);
+            bool init(std::string filename);
             void setFileStream(std::fstream *inFile) {
                 this->infile = inFile;
+            }
+
+            std::size_t getBytesRead() const {
+                return this->bytesRead;
             }
         private:
             std::fstream *infile;
             std::size_t rowLength;
+            std::size_t bytesRead;
             std::string filename;
     };
 
