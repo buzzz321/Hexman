@@ -10,7 +10,10 @@
 namespace Program {
     class FileBuffer {
         public:
-            FileBuffer(std::size_t len);
+        
+            FileBuffer(std::size_t len): infile(NULL), rowLength(len), bytesRead(0), filename("")  {
+            };
+        
             virtual ~FileBuffer ();
 
             std::vector<unsigned char> getLine();

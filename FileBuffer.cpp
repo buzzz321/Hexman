@@ -6,9 +6,7 @@
 using namespace std;
 using namespace Program;
 
-FileBuffer::FileBuffer(std::size_t len): rowLength(len), bytesRead(0), infile(NULL) {
-    cout<<this->rowLength<<endl;
-}
+
 
 std::vector<unsigned char>
 FileBuffer::getLine(){
