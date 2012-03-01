@@ -51,7 +51,11 @@ include(${QT_USE_FILE})
 
 # the variable "Hexman_SRCS" contains all .cpp files of this project
 set(Hexman_SRCS main.cpp  hexmanwindow.cpp FileBuffer.cpp)
-set(Hexman_TST ${CMAKE_SOURCE_DIR}/test/FileBuffer_test.cpp FileBuffer.cpp)
+set(Hexman_TST ${CMAKE_SOURCE_DIR}/test/FileBuffer_test.cpp
+  FileBuffer.cpp
+  ${CMAKE_SOURCE_DIR}/test/Formatter_test.cpp
+  Formatter.cpp 
+  )
 
 ## tests
 add_test(test1 tester)
