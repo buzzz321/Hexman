@@ -36,3 +36,13 @@ build/moc_hexmanwindow.cxx
 build/tester
 
 xcode/CTestTestfile.cmake
+/nbproject/private/
+Hexman.app/Contents/Info.plist
+
+nbproject/Package-Default.bash
+
+Hexman.app/Contents/Resources/empty.lproj
+
+nbproject/configurations.xml
+
+nbproject/project.xml
